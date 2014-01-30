@@ -1,0 +1,1 @@
+Direktori ini akan berisi file yang berisi kaidah inferensi dalam SWRL atau JENA Rule

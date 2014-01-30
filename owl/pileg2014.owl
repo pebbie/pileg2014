@@ -1,0 +1,2899 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY foaf "http://xmlns.org/foaf/0.1/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
+    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY pemilu "http://pebbie.org/ont/2014/pemilu#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://pebbie.org/ont/2014/pemilu#"
+     xml:base="http://pebbie.org/ont/2014/pemilu"
+     xmlns:pemilu="http://pebbie.org/ont/2014/pemilu#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:foaf="http://xmlns.org/foaf/0.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://pebbie.org/ont/2014/pemilu"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#posisiGelar -->
+
+    <owl:AnnotationProperty rdf:about="&pemilu;posisiGelar">
+        <rdfs:comment>nilai negatif : di depan nama
+nilai positif : di belakang nama
+semakin kecil nilainya posisi semakin di depan, semakin besar semakin belakang</rdfs:comment>
+        <rdfs:domain rdf:resource="&pemilu;Gelar"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#almamater -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;almamater">
+        <rdfs:range rdf:resource="&pemilu;LembagaPendidikan"/>
+        <rdfs:domain rdf:resource="&pemilu;Orang"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#bekerjaPada -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;bekerjaPada">
+        <rdfs:subPropertyOf rdf:resource="&pemilu;berasosiasiDengan"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#berGelar -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;berGelar">
+        <rdfs:range rdf:resource="&pemilu;Gelar"/>
+        <rdfs:domain rdf:resource="&pemilu;Orang"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#beradaDi -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;beradaDi">
+        <rdfs:domain rdf:resource="&pemilu;Dapil"/>
+        <rdfs:range rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:subPropertyOf rdf:resource="&pemilu;subDaerah"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#berasosiasiDengan -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;berasosiasiDengan">
+        <rdfs:domain rdf:resource="&pemilu;Orang"/>
+        <rdfs:range rdf:resource="&pemilu;Organisasi"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#bertempatDi -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;bertempatDi">
+        <rdfs:range rdf:resource="&pemilu;Daerah"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#dalamBidangIlmu -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;dalamBidangIlmu">
+        <rdfs:range rdf:resource="&pemilu;BidangIlmu"/>
+        <rdfs:domain rdf:resource="&pemilu;Pendidikan"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#dariPartai -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;dariPartai">
+        <rdfs:domain rdf:resource="&pemilu;Caleg"/>
+        <rdfs:range rdf:resource="&pemilu;PartaiPolitik"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#diFakultas -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;diFakultas">
+        <rdfs:range rdf:resource="&pemilu;Fakultas"/>
+        <rdfs:domain rdf:resource="&pemilu;ProgramStudi"/>
+        <rdfs:subPropertyOf rdf:resource="&pemilu;subOrganisasi"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#diKampus -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;diKampus">
+        <rdfs:domain rdf:resource="&pemilu;PendidikanFormal"/>
+        <rdfs:range rdf:resource="&pemilu;Universitas"/>
+        <rdfs:subPropertyOf rdf:resource="&pemilu;diLembaga"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#diLembaga -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;diLembaga">
+        <rdfs:range rdf:resource="&pemilu;LembagaPendidikan"/>
+        <rdfs:domain rdf:resource="&pemilu;Pendidikan"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#diSekolah -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;diSekolah">
+        <rdfs:range rdf:resource="&pemilu;PendidikanDasar"/>
+        <rdfs:domain rdf:resource="&pemilu;PendidikanFormal"/>
+        <rdfs:range rdf:resource="&pemilu;PendidikanMenengah"/>
+        <rdfs:subPropertyOf rdf:resource="&pemilu;diLembaga"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#diUniversitas -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;diUniversitas">
+        <rdfs:range rdf:resource="&pemilu;Universitas"/>
+        <rdfs:subPropertyOf rdf:resource="&pemilu;subOrganisasi"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#karyawan -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;karyawan">
+        <rdfs:range rdf:resource="&pemilu;Perusahaan"/>
+        <rdfs:subPropertyOf rdf:resource="&pemilu;bekerjaPada"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#kotaDomisili -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;kotaDomisili">
+        <rdfs:range rdf:resource="&pemilu;KotaKabupaten"/>
+        <rdfs:domain rdf:resource="&pemilu;Orang"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#latarBelakangIlmu -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;latarBelakangIlmu">
+        <rdfs:range rdf:resource="&pemilu;BidangIlmu"/>
+        <rdfs:domain rdf:resource="&pemilu;Orang"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#memelukAgama -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;memelukAgama">
+        <rdfs:range rdf:resource="&pemilu;Agama"/>
+        <rdfs:domain rdf:resource="&pemilu;Orang"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#mendapatGelar -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;mendapatGelar">
+        <rdfs:range rdf:resource="&pemilu;Gelar"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#mengikutiPendidikan -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;mengikutiPendidikan">
+        <rdfs:domain rdf:resource="&pemilu;Orang"/>
+        <rdfs:range rdf:resource="&pemilu;Pendidikan"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#negaraAlmamater -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;negaraAlmamater">
+        <rdfs:range rdf:resource="&pemilu;Negara"/>
+        <rdfs:domain rdf:resource="&pemilu;Orang"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#negaraPenugasan -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;negaraPenugasan">
+        <rdfs:range rdf:resource="&pemilu;Negara"/>
+        <rdfs:domain rdf:resource="&pemilu;Pekerjaan"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#padaDapil -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;padaDapil">
+        <rdfs:domain rdf:resource="&pemilu;Caleg"/>
+        <rdfs:range rdf:resource="&pemilu;Dapil"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#padaProgram -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;padaProgram">
+        <rdfs:domain rdf:resource="&pemilu;PendidikanFormal"/>
+        <rdfs:range rdf:resource="&pemilu;ProgramStudi"/>
+        <rdfs:subPropertyOf rdf:resource="&pemilu;diLembaga"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#peran -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;peran">
+        <rdfs:domain rdf:resource="&pemilu;Pekerjaan"/>
+        <rdfs:range rdf:resource="&pemilu;Peranan"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#setingkatGelar -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;setingkatGelar">
+        <rdfs:domain rdf:resource="&pemilu;PendidikanFormal"/>
+        <rdfs:range rdf:resource="&pemilu;TingkatPendidikan"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#subDaerah -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;subDaerah">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:range rdf:resource="&pemilu;Daerah"/>
+        <rdfs:domain rdf:resource="&pemilu;Daerah"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#subOrganisasi -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;subOrganisasi">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#untukLembaga -->
+
+    <owl:ObjectProperty rdf:about="&pemilu;untukLembaga">
+        <rdfs:domain rdf:resource="&pemilu;Caleg"/>
+        <rdfs:range rdf:resource="&pemilu;Legislatif"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://xmlns.org/foaf/0.1/depiction -->
+
+    <owl:ObjectProperty rdf:about="&foaf;depiction"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#NIK -->
+
+    <owl:DatatypeProperty rdf:about="&pemilu;NIK"/>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#berNama -->
+
+    <owl:DatatypeProperty rdf:about="&pemilu;berNama">
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#jabatan -->
+
+    <owl:DatatypeProperty rdf:about="&pemilu;jabatan"/>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#jumlahKursi -->
+
+    <owl:DatatypeProperty rdf:about="&pemilu;jumlahKursi">
+        <rdfs:label xml:lang="id">kursi</rdfs:label>
+        <rdfs:range rdf:resource="&xsd;positiveInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#jumlahPenduduk -->
+
+    <owl:DatatypeProperty rdf:about="&pemilu;jumlahPenduduk">
+        <rdfs:label xml:lang="id">penduduk</rdfs:label>
+        <rdfs:range rdf:resource="&xsd;positiveInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#kode -->
+
+    <owl:DatatypeProperty rdf:about="&pemilu;kode">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="&xsd;positiveInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#namaAlias -->
+
+    <owl:DatatypeProperty rdf:about="&pemilu;namaAlias"/>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#nomorPartai -->
+
+    <owl:DatatypeProperty rdf:about="&pemilu;nomorPartai">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&pemilu;PartaiPolitik"/>
+        <rdfs:range rdf:resource="&xsd;positiveInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#nomorUrut -->
+
+    <owl:DatatypeProperty rdf:about="&pemilu;nomorUrut">
+        <rdfs:range rdf:resource="&xsd;positiveInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#tahunMulai -->
+
+    <owl:DatatypeProperty rdf:about="&pemilu;tahunMulai">
+        <rdfs:domain rdf:resource="&pemilu;Riwayat"/>
+        <rdfs:range rdf:resource="&xsd;positiveInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#tahunSelesai -->
+
+    <owl:DatatypeProperty rdf:about="&pemilu;tahunSelesai">
+        <rdfs:domain rdf:resource="&pemilu;Riwayat"/>
+        <rdfs:range rdf:resource="&xsd;positiveInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#tanggalLahir -->
+
+    <owl:DatatypeProperty rdf:about="&pemilu;tanggalLahir">
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#tempatLahir -->
+
+    <owl:DatatypeProperty rdf:about="&pemilu;tempatLahir"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Agama -->
+
+    <owl:Class rdf:about="&pemilu;Agama"/>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#BidangIlmu -->
+
+    <owl:Class rdf:about="&pemilu;BidangIlmu"/>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Caleg -->
+
+    <owl:Class rdf:about="&pemilu;Caleg">
+        <rdfs:subClassOf rdf:resource="&pemilu;Orang"/>
+    </owl:Class>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Daerah -->
+
+    <owl:Class rdf:about="&pemilu;Daerah"/>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Dapil -->
+
+    <owl:Class rdf:about="&pemilu;Dapil">
+        <rdfs:label xml:lang="id">Daerah Pemilihan</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&pemilu;Daerah"/>
+    </owl:Class>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Fakultas -->
+
+    <owl:Class rdf:about="&pemilu;Fakultas">
+        <rdfs:subClassOf rdf:resource="&pemilu;PendidikanTinggi"/>
+        <rdfs:comment xml:lang="id">Fakultas, Sekolah, Departemen</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Gelar -->
+
+    <owl:Class rdf:about="&pemilu;Gelar">
+        <rdfs:comment xml:lang="id">Gelar resmi yang diberikan ke seseorang</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#GelarKepangkatan -->
+
+    <owl:Class rdf:about="&pemilu;GelarKepangkatan">
+        <rdfs:subClassOf rdf:resource="&pemilu;Gelar"/>
+    </owl:Class>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#GelarPendidikan -->
+
+    <owl:Class rdf:about="&pemilu;GelarPendidikan">
+        <rdfs:subClassOf rdf:resource="&pemilu;Gelar"/>
+    </owl:Class>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#KotaKabupaten -->
+
+    <owl:Class rdf:about="&pemilu;KotaKabupaten">
+        <rdfs:subClassOf rdf:resource="&pemilu;Daerah"/>
+    </owl:Class>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#KursusDiklat -->
+
+    <owl:Class rdf:about="&pemilu;KursusDiklat">
+        <rdfs:subClassOf rdf:resource="&pemilu;Pendidikan"/>
+        <owl:disjointWith rdf:resource="&pemilu;PendidikanFormal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Legislatif -->
+
+    <owl:Class rdf:about="&pemilu;Legislatif">
+        <rdfs:subClassOf rdf:resource="&pemilu;Organisasi"/>
+    </owl:Class>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#LembagaPendidikan -->
+
+    <owl:Class rdf:about="&pemilu;LembagaPendidikan">
+        <rdfs:subClassOf rdf:resource="&pemilu;Organisasi"/>
+    </owl:Class>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Negara -->
+
+    <owl:Class rdf:about="&pemilu;Negara">
+        <rdfs:subClassOf rdf:resource="&pemilu;Daerah"/>
+    </owl:Class>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Orang -->
+
+    <owl:Class rdf:about="&pemilu;Orang"/>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Organisasi -->
+
+    <owl:Class rdf:about="&pemilu;Organisasi"/>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Ormas -->
+
+    <owl:Class rdf:about="&pemilu;Ormas">
+        <rdfs:subClassOf rdf:resource="&pemilu;Organisasi"/>
+    </owl:Class>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#PartaiPolitik -->
+
+    <owl:Class rdf:about="&pemilu;PartaiPolitik">
+        <rdfs:subClassOf rdf:resource="&pemilu;Organisasi"/>
+    </owl:Class>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Pekerjaan -->
+
+    <owl:Class rdf:about="&pemilu;Pekerjaan">
+        <rdfs:subClassOf rdf:resource="&pemilu;Riwayat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Pendidikan -->
+
+    <owl:Class rdf:about="&pemilu;Pendidikan">
+        <rdfs:subClassOf rdf:resource="&pemilu;Riwayat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#PendidikanDasar -->
+
+    <owl:Class rdf:about="&pemilu;PendidikanDasar">
+        <rdfs:subClassOf rdf:resource="&pemilu;LembagaPendidikan"/>
+    </owl:Class>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#PendidikanFormal -->
+
+    <owl:Class rdf:about="&pemilu;PendidikanFormal">
+        <rdfs:subClassOf rdf:resource="&pemilu;Pendidikan"/>
+    </owl:Class>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#PendidikanMenengah -->
+
+    <owl:Class rdf:about="&pemilu;PendidikanMenengah">
+        <rdfs:subClassOf rdf:resource="&pemilu;LembagaPendidikan"/>
+    </owl:Class>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#PendidikanTinggi -->
+
+    <owl:Class rdf:about="&pemilu;PendidikanTinggi">
+        <rdfs:subClassOf rdf:resource="&pemilu;LembagaPendidikan"/>
+    </owl:Class>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Peranan -->
+
+    <owl:Class rdf:about="&pemilu;Peranan"/>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Perusahaan -->
+
+    <owl:Class rdf:about="&pemilu;Perusahaan">
+        <rdfs:subClassOf rdf:resource="&pemilu;Organisasi"/>
+    </owl:Class>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#ProgramStudi -->
+
+    <owl:Class rdf:about="&pemilu;ProgramStudi">
+        <rdfs:subClassOf rdf:resource="&pemilu;PendidikanTinggi"/>
+        <rdfs:comment xml:lang="id">Program Studi, Jurusan</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Provinsi -->
+
+    <owl:Class rdf:about="&pemilu;Provinsi">
+        <rdfs:subClassOf rdf:resource="&pemilu;Daerah"/>
+    </owl:Class>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Riwayat -->
+
+    <owl:Class rdf:about="&pemilu;Riwayat"/>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#TingkatPendidikan -->
+
+    <owl:Class rdf:about="&pemilu;TingkatPendidikan"/>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Universitas -->
+
+    <owl:Class rdf:about="&pemilu;Universitas">
+        <rdfs:subClassOf rdf:resource="&pemilu;PendidikanTinggi"/>
+        <rdfs:comment xml:lang="id">Universitas, Institut, Sekolah Tinggi</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#1101_Aceh_I -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;1101_Aceh_I">
+        <rdf:type rdf:resource="&pemilu;Dapil"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#1102_Aceh_II -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;1102_Aceh_II">
+        <rdf:type rdf:resource="&pemilu;Dapil"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#1201_Sumut_I -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;1201_Sumut_I">
+        <rdf:type rdf:resource="&pemilu;Dapil"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#1202_Sumut_II -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;1202_Sumut_II">
+        <rdf:type rdf:resource="&pemilu;Dapil"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#1203_Sumut_III -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;1203_Sumut_III">
+        <rdf:type rdf:resource="&pemilu;Dapil"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#1301_Sumbar_I -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;1301_Sumbar_I">
+        <rdf:type rdf:resource="&pemilu;Dapil"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#1302_Sumbar_II -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;1302_Sumbar_II">
+        <rdf:type rdf:resource="&pemilu;Dapil"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#3102_DKI_II -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;3102_DKI_II">
+        <rdf:type rdf:resource="&pemilu;Dapil"/>
+        <rdfs:label xml:lang="id">DKI Jakarta II</rdfs:label>
+        <beradaDi rdf:resource="&pemilu;DKI_Jakarta"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Aceh -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Aceh">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Aceh</rdfs:label>
+        <kode rdf:datatype="&xsd;positiveInteger">11</kode>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">13</jumlahKursi>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">5015234</jumlahPenduduk>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#AlgonquinCollege -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;AlgonquinCollege">
+        <rdf:type rdf:resource="&pemilu;Universitas"/>
+        <bertempatDi rdf:resource="&pemilu;Ottawa"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#BPS -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;BPS">
+        <rdf:type rdf:resource="&pemilu;GelarPendidikan"/>
+        <rdfs:label xml:lang="id">BPS</rdfs:label>
+        <posisiGelar rdf:datatype="&xsd;integer">1</posisiGelar>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#BUDHA -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;BUDHA">
+        <rdf:type rdf:resource="&pemilu;Agama"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Babel -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Babel">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Kepulauan Bangka Belitung</rdfs:label>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">1349199</jumlahPenduduk>
+        <kode rdf:datatype="&xsd;positiveInteger">19</kode>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">3</jumlahKursi>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Bali -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Bali">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Bali</rdfs:label>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">4227705</jumlahPenduduk>
+        <kode rdf:datatype="&xsd;positiveInteger">51</kode>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">9</jumlahKursi>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Bandung -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Bandung">
+        <rdf:type rdf:resource="&pemilu;KotaKabupaten"/>
+        <subDaerah rdf:resource="&pemilu;Jabar"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Banten -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Banten">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Banten</rdfs:label>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">22</jumlahKursi>
+        <kode rdf:datatype="&xsd;positiveInteger">36</kode>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">9938820</jumlahPenduduk>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Bengkulu -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Bengkulu">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Bengkulu</rdfs:label>
+        <kode rdf:datatype="&xsd;positiveInteger">17</kode>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">1996538</jumlahPenduduk>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">4</jumlahKursi>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Bogor -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Bogor">
+        <rdf:type rdf:resource="&pemilu;KotaKabupaten"/>
+        <subDaerah rdf:resource="&pemilu;Jabar"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#D1 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;D1">
+        <rdf:type rdf:resource="&pemilu;TingkatPendidikan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#D2 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;D2">
+        <rdf:type rdf:resource="&pemilu;TingkatPendidikan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#D3 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;D3">
+        <rdf:type rdf:resource="&pemilu;TingkatPendidikan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#D4 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;D4">
+        <rdf:type rdf:resource="&pemilu;TingkatPendidikan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DEMOKRAT -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DEMOKRAT">
+        <rdf:type rdf:resource="&pemilu;PartaiPolitik"/>
+        <rdfs:label xml:lang="id">Partai Demokrat</rdfs:label>
+        <nomorPartai rdf:datatype="&xsd;positiveInteger">7</nomorPartai>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DIY -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DIY">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Daerah Istimewa Yogyakarta</rdfs:label>
+        <kode rdf:datatype="&xsd;positiveInteger">34</kode>
+        <subDaerah rdf:resource="&pemilu;Indonesia"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DKI_Jakarta -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DKI_Jakarta">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Daerah Khusus Ibukota Jakarta</rdfs:label>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">21</jumlahKursi>
+        <kode rdf:datatype="&xsd;positiveInteger">31</kode>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">9603417</jumlahPenduduk>
+        <subDaerah rdf:resource="&pemilu;Indonesia"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR">
+        <rdf:type rdf:resource="&pemilu;Legislatif"/>
+        <rdfs:label xml:lang="id">Dewan Perwakilan Rakyat</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020101 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020101">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+        <rdfs:label>DIENNARYATI TJOKROSUPRIHARTONO</rdfs:label>
+        <nomorUrut rdf:datatype="&xsd;positiveInteger">1</nomorUrut>
+        <tanggalLahir rdf:datatype="&xsd;dateTime">1954-01-03T00:00:00</tanggalLahir>
+        <berNama rdf:datatype="&xsd;string">DIENNARYATI TJOKROSUPRIHARTONO</berNama>
+        <tempatLahir>Paris</tempatLahir>
+        <NIK>3173054301540001</NIK>
+        <padaDapil rdf:resource="&pemilu;3102_DKI_II"/>
+        <untukLembaga rdf:resource="&pemilu;DPR"/>
+        <mengikutiPendidikan rdf:resource="&pemilu;DPR31020101_pendidikan_1"/>
+        <mengikutiPendidikan rdf:resource="&pemilu;DPR31020101_pendidikan_2"/>
+        <mengikutiPendidikan rdf:resource="&pemilu;DPR31020101_pendidikan_3"/>
+        <mengikutiPendidikan rdf:resource="&pemilu;DPR31020101_pendidikan_4"/>
+        <mengikutiPendidikan rdf:resource="&pemilu;DPR31020101_pendidikan_5"/>
+        <kotaDomisili rdf:resource="&pemilu;JakartaBarat"/>
+        <dariPartai rdf:resource="&pemilu;NASDEM"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020101_pendidikan_1 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020101_pendidikan_1">
+        <rdf:type rdf:resource="&pemilu;PendidikanFormal"/>
+        <tahunMulai rdf:datatype="&xsd;positiveInteger">1962</tahunMulai>
+        <tahunSelesai rdf:datatype="&xsd;positiveInteger">1965</tahunSelesai>
+        <diSekolah rdf:resource="&pemilu;SD_ReginaPacis"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020101_pendidikan_2 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020101_pendidikan_2">
+        <rdf:type rdf:resource="&pemilu;PendidikanFormal"/>
+        <tahunMulai rdf:datatype="&xsd;positiveInteger">1965</tahunMulai>
+        <tahunSelesai rdf:datatype="&xsd;positiveInteger">1968</tahunSelesai>
+        <diSekolah rdf:resource="&pemilu;SMP_ReginaPacis"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020101_pendidikan_3 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020101_pendidikan_3">
+        <rdf:type rdf:resource="&pemilu;PendidikanFormal"/>
+        <tahunMulai rdf:datatype="&xsd;positiveInteger">1968</tahunMulai>
+        <tahunSelesai rdf:datatype="&xsd;positiveInteger">1972</tahunSelesai>
+        <diSekolah rdf:resource="&pemilu;SMAN_2_BOGOR"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020101_pendidikan_4 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020101_pendidikan_4">
+        <rdf:type rdf:resource="&pemilu;PendidikanFormal"/>
+        <tahunMulai rdf:datatype="&xsd;positiveInteger">1972</tahunMulai>
+        <tahunSelesai rdf:datatype="&xsd;positiveInteger">1978</tahunSelesai>
+        <mendapatGelar rdf:resource="&pemilu;Dra"/>
+        <padaProgram rdf:resource="&pemilu;S1PsikologiUI"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020101_pendidikan_5 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020101_pendidikan_5">
+        <rdf:type rdf:resource="&pemilu;PendidikanFormal"/>
+        <tahunMulai rdf:datatype="&xsd;positiveInteger">1988</tahunMulai>
+        <tahunSelesai rdf:datatype="&xsd;positiveInteger">1990</tahunSelesai>
+        <mendapatGelar rdf:resource="&pemilu;MPsi"/>
+        <padaProgram rdf:resource="&pemilu;S2PsikologiUI"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020102 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020102">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+        <rdfs:label>LATHIFA MARINA AL ANSHORI</rdfs:label>
+        <tanggalLahir rdf:datatype="&xsd;dateTime">1991-08-20T00:00:00</tanggalLahir>
+        <nomorUrut rdf:datatype="&xsd;positiveInteger">2</nomorUrut>
+        <berNama rdf:datatype="&xsd;string">LATHIFA MARINA AL ANSHORI</berNama>
+        <tempatLahir xml:lang="id">Samarinda</tempatLahir>
+        <padaDapil rdf:resource="&pemilu;3102_DKI_II"/>
+        <untukLembaga rdf:resource="&pemilu;DPR"/>
+        <mengikutiPendidikan rdf:resource="&pemilu;DPR31020102_pendidikan_4"/>
+        <berGelar rdf:resource="&pemilu;Hj"/>
+        <memelukAgama rdf:resource="&pemilu;ISLAM"/>
+        <kotaDomisili rdf:resource="&pemilu;JakartaSelatan"/>
+        <dariPartai rdf:resource="&pemilu;NASDEM"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020102_pendidikan_4 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020102_pendidikan_4">
+        <rdf:type rdf:resource="&pemilu;PendidikanFormal"/>
+        <tahunMulai rdf:datatype="&xsd;positiveInteger">2008</tahunMulai>
+        <tahunSelesai rdf:datatype="&xsd;positiveInteger">2013</tahunSelesai>
+        <mendapatGelar rdf:resource="&pemilu;BPS"/>
+        <setingkatGelar rdf:resource="&pemilu;S1"/>
+        <diKampus rdf:resource="&pemilu;UniversitasCairo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020103 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020103">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+        <rdfs:label>PRAMU RISANTO</rdfs:label>
+        <tanggalLahir rdf:datatype="&xsd;dateTime">1967-02-27T00:00:00</tanggalLahir>
+        <nomorUrut rdf:datatype="&xsd;positiveInteger">3</nomorUrut>
+        <berNama rdf:datatype="&xsd;string">PRAMU RISANTO</berNama>
+        <tempatLahir>Purwokerto</tempatLahir>
+        <padaDapil rdf:resource="&pemilu;3102_DKI_II"/>
+        <untukLembaga rdf:resource="&pemilu;DPR"/>
+        <mengikutiPendidikan rdf:resource="&pemilu;DPR31020103_pendidikan_4"/>
+        <mengikutiPendidikan rdf:resource="&pemilu;DPR31020103_pendidikan_5"/>
+        <mengikutiPendidikan rdf:resource="&pemilu;DPR31020103_pendidikan_6"/>
+        <memelukAgama rdf:resource="&pemilu;ISLAM"/>
+        <kotaDomisili rdf:resource="&pemilu;JakartaSelatan"/>
+        <dariPartai rdf:resource="&pemilu;NASDEM"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020103_pendidikan_4 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020103_pendidikan_4">
+        <rdf:type rdf:resource="&pemilu;PendidikanFormal"/>
+        <tahunMulai rdf:datatype="&xsd;positiveInteger">1985</tahunMulai>
+        <tahunSelesai rdf:datatype="&xsd;positiveInteger">1991</tahunSelesai>
+        <diKampus rdf:resource="&pemilu;ISTN"/>
+        <setingkatGelar rdf:resource="&pemilu;S1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020103_pendidikan_5 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020103_pendidikan_5">
+        <rdf:type rdf:resource="&pemilu;PendidikanFormal"/>
+        <tahunSelesai rdf:datatype="&xsd;positiveInteger">2005</tahunSelesai>
+        <tahunSelesai rdf:datatype="&xsd;positiveInteger">2009</tahunSelesai>
+        <setingkatGelar rdf:resource="&pemilu;S1"/>
+        <diKampus rdf:resource="&pemilu;STIE_IBMI"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020103_pendidikan_6 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020103_pendidikan_6">
+        <rdf:type rdf:resource="&pemilu;PendidikanFormal"/>
+        <tahunMulai rdf:datatype="&xsd;positiveInteger">2009</tahunMulai>
+        <tahunSelesai rdf:datatype="&xsd;positiveInteger">2011</tahunSelesai>
+        <setingkatGelar rdf:resource="&pemilu;S2"/>
+        <diKampus rdf:resource="&pemilu;STEKPI"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020104 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020104">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+        <rdfs:label xml:lang="id">MUHAMMAD RAIS</rdfs:label>
+        <tanggalLahir rdf:datatype="&xsd;dateTime">1985-12-23T00:00:00</tanggalLahir>
+        <nomorUrut rdf:datatype="&xsd;positiveInteger">4</nomorUrut>
+        <tempatLahir rdf:datatype="&xsd;string">Bone</tempatLahir>
+        <berNama rdf:datatype="&xsd;string">MUHAMMAD RAIS</berNama>
+        <NIK>7371112312850005</NIK>
+        <padaDapil rdf:resource="&pemilu;3102_DKI_II"/>
+        <untukLembaga rdf:resource="&pemilu;DPR"/>
+        <mengikutiPendidikan rdf:resource="&pemilu;DPR31020104_pendidikan_4"/>
+        <memelukAgama rdf:resource="&pemilu;ISLAM"/>
+        <dariPartai rdf:resource="&pemilu;NASDEM"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020104_pendidikan_4 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020104_pendidikan_4">
+        <rdf:type rdf:resource="&pemilu;PendidikanFormal"/>
+        <tahunMulai rdf:datatype="&xsd;positiveInteger">2004</tahunMulai>
+        <tahunSelesai rdf:datatype="&xsd;positiveInteger">2009</tahunSelesai>
+        <setingkatGelar rdf:resource="&pemilu;S1"/>
+        <diKampus rdf:resource="&pemilu;UniversitasHassanudin"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020105 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020105">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+        <tanggalLahir rdf:datatype="&xsd;dateTime">1961-12-07T00:00:00</tanggalLahir>
+        <nomorUrut rdf:datatype="&xsd;positiveInteger">5</nomorUrut>
+        <berNama rdf:datatype="&xsd;string">DESTINA LESTARI</berNama>
+        <NIK>3174074712610001</NIK>
+        <padaDapil rdf:resource="&pemilu;3102_DKI_II"/>
+        <untukLembaga rdf:resource="&pemilu;DPR"/>
+        <mengikutiPendidikan rdf:resource="&pemilu;DPR31020105_pendidikan_4"/>
+        <mengikutiPendidikan rdf:resource="&pemilu;DPR31020105_pendidikan_5"/>
+        <kotaDomisili rdf:resource="&pemilu;JakartaSelatan"/>
+        <dariPartai rdf:resource="&pemilu;NASDEM"/>
+        <memelukAgama rdf:resource="&pemilu;PROTESTAN"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020105_pendidikan_4 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020105_pendidikan_4">
+        <rdf:type rdf:resource="&pemilu;PendidikanFormal"/>
+        <tahunMulai rdf:datatype="&xsd;positiveInteger">1980</tahunMulai>
+        <tahunSelesai rdf:datatype="&xsd;positiveInteger">1983</tahunSelesai>
+        <diKampus rdf:resource="&pemilu;AlgonquinCollege"/>
+        <setingkatGelar rdf:resource="&pemilu;D3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020105_pendidikan_5 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020105_pendidikan_5">
+        <rdf:type rdf:resource="&pemilu;PendidikanFormal"/>
+        <tahunMulai rdf:datatype="&xsd;positiveInteger">1983</tahunMulai>
+        <tahunSelesai rdf:datatype="&xsd;positiveInteger">1984</tahunSelesai>
+        <setingkatGelar rdf:resource="&pemilu;D4"/>
+        <diKampus rdf:resource="&pemilu;SorbonneUniversity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020106 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020106">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+        <tanggalLahir rdf:datatype="&xsd;dateTime">1965-09-27T00:00:00</tanggalLahir>
+        <nomorUrut rdf:datatype="&xsd;positiveInteger">6</nomorUrut>
+        <tempatLahir rdf:datatype="&xsd;string">Makassar</tempatLahir>
+        <berNama rdf:datatype="&xsd;string">WIWIK SRI WIDIARTY</berNama>
+        <NIK>3674056709650007</NIK>
+        <padaDapil rdf:resource="&pemilu;3102_DKI_II"/>
+        <mengikutiPendidikan rdf:resource="&pemilu;DPR31020106_pendidikan_4"/>
+        <mengikutiPendidikan rdf:resource="&pemilu;DPR31020106_pendidikan_5"/>
+        <mengikutiPendidikan rdf:resource="&pemilu;DPR31020106_pendidikan_6"/>
+        <dariPartai rdf:resource="&pemilu;NASDEM"/>
+        <kotaDomisili rdf:resource="&pemilu;TangerangSelatan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020106_pendidikan_4 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020106_pendidikan_4">
+        <rdf:type rdf:resource="&pemilu;PendidikanFormal"/>
+        <tahunMulai rdf:datatype="&xsd;positiveInteger">1999</tahunMulai>
+        <tahunSelesai rdf:datatype="&xsd;positiveInteger">2003</tahunSelesai>
+        <setingkatGelar rdf:resource="&pemilu;S1"/>
+        <padaProgram rdf:resource="&pemilu;S1HukumUKI"/>
+        <mendapatGelar rdf:resource="&pemilu;SH"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020106_pendidikan_5 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020106_pendidikan_5">
+        <rdf:type rdf:resource="&pemilu;PendidikanFormal"/>
+        <tahunMulai rdf:datatype="&xsd;positiveInteger">2004</tahunMulai>
+        <tahunSelesai rdf:datatype="&xsd;positiveInteger">2006</tahunSelesai>
+        <mendapatGelar rdf:resource="&pemilu;MH"/>
+        <setingkatGelar rdf:resource="&pemilu;S2"/>
+        <padaProgram rdf:resource="&pemilu;S2HukumUI"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020106_pendidikan_6 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020106_pendidikan_6">
+        <rdf:type rdf:resource="&pemilu;PendidikanFormal"/>
+        <tahunMulai rdf:datatype="&xsd;positiveInteger">2009</tahunMulai>
+        <tahunSelesai rdf:datatype="&xsd;positiveInteger">2012</tahunSelesai>
+        <mendapatGelar rdf:resource="&pemilu;Dr"/>
+        <setingkatGelar rdf:resource="&pemilu;S3"/>
+        <diKampus rdf:resource="&pemilu;UniversitasPadjadjaran"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020107 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020107">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+        <tanggalLahir rdf:datatype="&xsd;dateTime">1979-12-29T00:00:00</tanggalLahir>
+        <nomorUrut rdf:datatype="&xsd;positiveInteger">7</nomorUrut>
+        <tempatLahir rdf:datatype="&xsd;string">Jakarta</tempatLahir>
+        <berNama rdf:datatype="&xsd;string">NURUL HUSNAH FAUZIAH</berNama>
+        <NIK>3172036912790012</NIK>
+        <padaDapil rdf:resource="&pemilu;3102_DKI_II"/>
+        <untukLembaga rdf:resource="&pemilu;DPR"/>
+        <mengikutiPendidikan rdf:resource="&pemilu;DPR31020107_pendidikan_4"/>
+        <kotaDomisili rdf:resource="&pemilu;JakartaUtara"/>
+        <dariPartai rdf:resource="&pemilu;NASDEM"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020107_pendidikan_4 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020107_pendidikan_4">
+        <rdf:type rdf:resource="&pemilu;PendidikanFormal"/>
+        <tahunMulai rdf:datatype="&xsd;positiveInteger">1998</tahunMulai>
+        <tahunSelesai rdf:datatype="&xsd;positiveInteger">2001</tahunSelesai>
+        <setingkatGelar rdf:resource="&pemilu;D3"/>
+        <diKampus rdf:resource="&pemilu;UniversitasTrisakti"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020201 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020201">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+        <nomorUrut rdf:datatype="&xsd;positiveInteger">1</nomorUrut>
+        <tanggalLahir rdf:datatype="&xsd;dateTime">1963-08-14T00:00:00</tanggalLahir>
+        <berNama rdf:datatype="&xsd;string">ABDUL WAHID MAKTUB</berNama>
+        <tempatLahir rdf:datatype="&xsd;string">Bangkalan</tempatLahir>
+        <NIK>3174041408630002</NIK>
+        <padaDapil rdf:resource="&pemilu;3102_DKI_II"/>
+        <untukLembaga rdf:resource="&pemilu;DPR"/>
+        <mengikutiPendidikan rdf:resource="&pemilu;DPR31020201_pendidikan_4"/>
+        <memelukAgama rdf:resource="&pemilu;ISLAM"/>
+        <kotaDomisili rdf:resource="&pemilu;JakartaSelatan"/>
+        <dariPartai rdf:resource="&pemilu;PKB"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020201_pendidikan_4 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020201_pendidikan_4">
+        <rdf:type rdf:resource="&pemilu;PendidikanFormal"/>
+        <tahunSelesai rdf:datatype="&xsd;positiveInteger">1994</tahunSelesai>
+        <padaProgram rdf:resource="&pemilu;S1HubunganInternasionalUGM"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020202 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020202">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020203 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020203">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020204 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020204">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020205 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020205">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020206 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020206">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020207 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020207">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020501 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020501">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020502 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020502">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020503 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020503">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020504 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020504">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020505 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020505">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020506 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020506">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020507 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020507">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020901 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020901">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020902 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020902">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020903 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020903">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020904 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020904">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020905 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020905">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020906 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020906">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DPR31020907 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DPR31020907">
+        <rdf:type rdf:resource="&pemilu;Caleg"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Dr -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Dr">
+        <rdf:type rdf:resource="&pemilu;GelarPendidikan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Dra -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Dra">
+        <rdf:type rdf:resource="&pemilu;GelarPendidikan"/>
+        <rdfs:label xml:lang="id">Dra.</rdfs:label>
+        <posisiGelar rdf:datatype="&xsd;integer">-2</posisiGelar>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DubesRI_Qatar -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DubesRI_Qatar">
+        <rdf:type rdf:resource="&pemilu;Pekerjaan"/>
+        <negaraPenugasan rdf:resource="&pemilu;Qatar"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#DutaBesarRI -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;DutaBesarRI">
+        <rdf:type rdf:resource="&pemilu;Peranan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#FakultasPsikologiUI -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;FakultasPsikologiUI">
+        <rdf:type rdf:resource="&pemilu;Fakultas"/>
+        <diUniversitas rdf:resource="&pemilu;UniversitasIndonesia"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#FisipolUGM -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;FisipolUGM">
+        <rdf:type rdf:resource="&pemilu;Fakultas"/>
+        <diUniversitas rdf:resource="&pemilu;UGM"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#GERINDRA -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;GERINDRA">
+        <rdf:type rdf:resource="&pemilu;PartaiPolitik"/>
+        <rdfs:label xml:lang="id">Partai Gerindra</rdfs:label>
+        <nomorPartai rdf:datatype="&xsd;positiveInteger">6</nomorPartai>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#GOLKAR -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;GOLKAR">
+        <rdf:type rdf:resource="&pemilu;PartaiPolitik"/>
+        <rdfs:label xml:lang="id">Partai Golkar</rdfs:label>
+        <nomorPartai rdf:datatype="&xsd;positiveInteger">5</nomorPartai>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Gorontalo -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Gorontalo">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Gorontalo</rdfs:label>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">1147528</jumlahPenduduk>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">3</jumlahKursi>
+        <kode rdf:datatype="&xsd;positiveInteger">75</kode>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#H -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;H">
+        <rdf:type rdf:resource="&pemilu;Gelar"/>
+        <rdfs:label xml:lang="id">Haji</rdfs:label>
+        <posisiGelar rdf:datatype="&xsd;integer">0</posisiGelar>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#HANURA -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;HANURA">
+        <rdf:type rdf:resource="&pemilu;PartaiPolitik"/>
+        <rdfs:label xml:lang="id">Partai Hanura</rdfs:label>
+        <nomorPartai rdf:datatype="&xsd;positiveInteger">10</nomorPartai>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#HIMPSI -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;HIMPSI">
+        <rdf:type rdf:resource="&pemilu;Ormas"/>
+        <rdfs:label>Himpunan Psikologi Indonesia</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#HINDU -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;HINDU">
+        <rdf:type rdf:resource="&pemilu;Agama"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Hj -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Hj">
+        <rdf:type rdf:resource="&pemilu;Gelar"/>
+        <rdfs:label xml:lang="id">Hajjah</rdfs:label>
+        <posisiGelar rdf:datatype="&xsd;integer">0</posisiGelar>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#HubunganInternasional -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;HubunganInternasional">
+        <rdf:type rdf:resource="&pemilu;BidangIlmu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Hukum -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Hukum">
+        <rdf:type rdf:resource="&pemilu;BidangIlmu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#IPB -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;IPB">
+        <rdf:type rdf:resource="&pemilu;Universitas"/>
+        <bertempatDi rdf:resource="&pemilu;Bogor"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#ISLAM -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;ISLAM">
+        <rdf:type rdf:resource="&pemilu;Agama"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#ISTN -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;ISTN">
+        <rdf:type rdf:resource="&pemilu;Universitas"/>
+        <rdfs:label>Institut Sains dan Teknologi Nasional</rdfs:label>
+        <bertempatDi rdf:resource="&pemilu;DKI_Jakarta"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#ITB -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;ITB">
+        <rdf:type rdf:resource="&pemilu;Universitas"/>
+        <bertempatDi rdf:resource="&pemilu;Bandung"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Indonesia -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Indonesia">
+        <rdf:type rdf:resource="&pemilu;Negara"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Jabar -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Jabar">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Jawa Barat</rdfs:label>
+        <kode rdf:datatype="&xsd;positiveInteger">32</kode>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">39910274</jumlahPenduduk>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">91</jumlahKursi>
+        <subDaerah rdf:resource="&pemilu;Indonesia"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#JakartaBarat -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;JakartaBarat">
+        <rdf:type rdf:resource="&pemilu;KotaKabupaten"/>
+        <rdfs:label>Jakarta Barat</rdfs:label>
+        <subDaerah rdf:resource="&pemilu;DKI_Jakarta"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#JakartaSelatan -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;JakartaSelatan">
+        <rdf:type rdf:resource="&pemilu;KotaKabupaten"/>
+        <rdfs:label>Jakarta Selatan</rdfs:label>
+        <subDaerah rdf:resource="&pemilu;DKI_Jakarta"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#JakartaUtara -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;JakartaUtara">
+        <rdf:type rdf:resource="&pemilu;KotaKabupaten"/>
+        <subDaerah rdf:resource="&pemilu;DKI_Jakarta"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Jambi -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Jambi">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Jambi</rdfs:label>
+        <kode rdf:datatype="&xsd;positiveInteger">15</kode>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">3532126</jumlahPenduduk>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">7</jumlahKursi>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Jateng -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Jateng">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Jawa Tengah</rdfs:label>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">32578357</jumlahPenduduk>
+        <kode rdf:datatype="&xsd;positiveInteger">33</kode>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">77</jumlahKursi>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Jatim -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Jatim">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Jawa Timur</rdfs:label>
+        <kode rdf:datatype="&xsd;positiveInteger">35</kode>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">37269885</jumlahPenduduk>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">87</jumlahKursi>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#KATOLIK -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;KATOLIK">
+        <rdf:type rdf:resource="&pemilu;Agama"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Kairo -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Kairo">
+        <rdf:type rdf:resource="&pemilu;KotaKabupaten"/>
+        <rdfs:label>Cairo</rdfs:label>
+        <subDaerah rdf:resource="&pemilu;Mesir"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Kalbar -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Kalbar">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Kalimantan Barat</rdfs:label>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">10</jumlahKursi>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">5193272</jumlahPenduduk>
+        <kode rdf:datatype="&xsd;positiveInteger">61</kode>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Kalsel -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Kalsel">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Kalimantan Selatan</rdfs:label>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">11</jumlahKursi>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">4145843</jumlahPenduduk>
+        <kode rdf:datatype="&xsd;positiveInteger">63</kode>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Kaltara -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Kaltara">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Kalimantan Utara</rdfs:label>
+        <kode rdf:datatype="&xsd;positiveInteger">65</kode>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Kalteng -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Kalteng">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Kalimantan Tengah</rdfs:label>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">2640070</jumlahPenduduk>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">6</jumlahKursi>
+        <kode rdf:datatype="&xsd;positiveInteger">62</kode>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Kaltim -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Kaltim">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Kalimantan Timur</rdfs:label>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">4154954</jumlahPenduduk>
+        <kode rdf:datatype="&xsd;positiveInteger">64</kode>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">8</jumlahKursi>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Kanada -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Kanada">
+        <rdf:type rdf:resource="&pemilu;Negara"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Kepri -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Kepri">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Kepulauan Riau</rdfs:label>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">1895590</jumlahPenduduk>
+        <kode rdf:datatype="&xsd;positiveInteger">21</kode>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">3</jumlahKursi>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Lampung -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Lampung">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Lampung</rdfs:label>
+        <kode rdf:datatype="&xsd;positiveInteger">18</kode>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">18</jumlahKursi>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">9586492</jumlahPenduduk>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#MH -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;MH">
+        <rdf:type rdf:resource="&pemilu;GelarPendidikan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#MPsi -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;MPsi">
+        <rdf:type rdf:resource="&pemilu;GelarPendidikan"/>
+        <rdfs:label xml:lang="id">M.Psi.</rdfs:label>
+        <posisiGelar rdf:datatype="&xsd;integer">2</posisiGelar>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Makassar -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Makassar">
+        <rdf:type rdf:resource="&pemilu;KotaKabupaten"/>
+        <rdfs:label>Kota Makassar</rdfs:label>
+        <subDaerah rdf:resource="&pemilu;Sulsel"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Maluku -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Maluku">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Maluku</rdfs:label>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">1866248</jumlahPenduduk>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">4</jumlahKursi>
+        <kode rdf:datatype="&xsd;positiveInteger">81</kode>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Malut -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Malut">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Maluku Utara</rdfs:label>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">1258354</jumlahPenduduk>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">3</jumlahKursi>
+        <kode rdf:datatype="&xsd;positiveInteger">82</kode>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Mesir -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Mesir">
+        <rdf:type rdf:resource="&pemilu;Negara"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#NASDEM -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;NASDEM">
+        <rdf:type rdf:resource="&pemilu;PartaiPolitik"/>
+        <rdfs:label xml:lang="id">Partai Nasional Demokrat</rdfs:label>
+        <nomorPartai rdf:datatype="&xsd;positiveInteger">1</nomorPartai>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#NTB -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;NTB">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Nusa Tenggara Barat</rdfs:label>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">10</jumlahKursi>
+        <kode rdf:datatype="&xsd;positiveInteger">52</kode>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">5398573</jumlahPenduduk>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#NTT -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;NTT">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Nusa Tenggara Timur</rdfs:label>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">13</jumlahKursi>
+        <kode rdf:datatype="&xsd;positiveInteger">53</kode>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">5343902</jumlahPenduduk>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Ontario -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Ontario">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <subDaerah rdf:resource="&pemilu;Kanada"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Ottawa -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Ottawa">
+        <rdf:type rdf:resource="&pemilu;KotaKabupaten"/>
+        <subDaerah rdf:resource="&pemilu;Ontario"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#PA -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;PA">
+        <rdf:type rdf:resource="&pemilu;PartaiPolitik"/>
+        <rdfs:label xml:lang="id">Partai Aceh</rdfs:label>
+        <nomorPartai rdf:datatype="&xsd;positiveInteger">13</nomorPartai>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#PAN -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;PAN">
+        <rdf:type rdf:resource="&pemilu;PartaiPolitik"/>
+        <rdfs:label xml:lang="id">Partai Amanat Nasional</rdfs:label>
+        <nomorPartai rdf:datatype="&xsd;positiveInteger">8</nomorPartai>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#PBB -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;PBB">
+        <rdf:type rdf:resource="&pemilu;PartaiPolitik"/>
+        <rdfs:label xml:lang="id">Partai Bulan Bintang</rdfs:label>
+        <nomorPartai rdf:datatype="&xsd;positiveInteger">15</nomorPartai>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#PDA -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;PDA">
+        <rdf:type rdf:resource="&pemilu;PartaiPolitik"/>
+        <rdfs:label xml:lang="id">Partai Damai Aceh</rdfs:label>
+        <nomorPartai rdf:datatype="&xsd;positiveInteger">11</nomorPartai>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#PDIP -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;PDIP">
+        <rdf:type rdf:resource="&pemilu;PartaiPolitik"/>
+        <rdfs:label xml:lang="id">Partai Demokrasi Indonesia Perjuangan</rdfs:label>
+        <nomorPartai rdf:datatype="&xsd;positiveInteger">4</nomorPartai>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#PKB -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;PKB">
+        <rdf:type rdf:resource="&pemilu;PartaiPolitik"/>
+        <rdfs:label xml:lang="id">Partai Kebangkitan Bangsa</rdfs:label>
+        <nomorPartai rdf:datatype="&xsd;positiveInteger">2</nomorPartai>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#PKPI -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;PKPI">
+        <rdf:type rdf:resource="&pemilu;PartaiPolitik"/>
+        <rdfs:label xml:lang="id">Partai Keadilan dan Persatuan Indonesia</rdfs:label>
+        <nomorPartai rdf:datatype="&xsd;positiveInteger">15</nomorPartai>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#PKS -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;PKS">
+        <rdf:type rdf:resource="&pemilu;PartaiPolitik"/>
+        <rdfs:label xml:lang="id">Partai Keadilan Sejahtera</rdfs:label>
+        <nomorPartai rdf:datatype="&xsd;positiveInteger">3</nomorPartai>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#PNA -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;PNA">
+        <rdf:type rdf:resource="&pemilu;PartaiPolitik"/>
+        <rdfs:label xml:lang="id">Partai Nasional Aceh</rdfs:label>
+        <nomorPartai rdf:datatype="&xsd;positiveInteger">12</nomorPartai>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#PPP -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;PPP">
+        <rdf:type rdf:resource="&pemilu;PartaiPolitik"/>
+        <rdfs:label xml:lang="id">Partai Persatuan Pembangunan</rdfs:label>
+        <nomorPartai rdf:datatype="&xsd;positiveInteger">9</nomorPartai>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#PROTESTAN -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;PROTESTAN">
+        <rdf:type rdf:resource="&pemilu;Agama"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Pabar -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Pabar">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Papua Barat</rdfs:label>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">1091171</jumlahPenduduk>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">3</jumlahKursi>
+        <kode rdf:datatype="&xsd;positiveInteger">92</kode>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Papua -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Papua">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Papua</rdfs:label>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">10</jumlahKursi>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">4224232</jumlahPenduduk>
+        <kode rdf:datatype="&xsd;positiveInteger">91</kode>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Paris -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Paris">
+        <rdf:type rdf:resource="&pemilu;KotaKabupaten"/>
+        <subDaerah rdf:resource="&pemilu;Perancis"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Perancis -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Perancis">
+        <rdf:type rdf:resource="&pemilu;Negara"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Psikologi -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Psikologi">
+        <rdf:type rdf:resource="&pemilu;BidangIlmu"/>
+        <rdfs:label>Psikologi</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Qatar -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Qatar">
+        <rdf:type rdf:resource="&pemilu;Negara"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Riau -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Riau">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Riau</rdfs:label>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">11</jumlahKursi>
+        <kode rdf:datatype="&xsd;positiveInteger">14</kode>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">6456322</jumlahPenduduk>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#S1 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;S1">
+        <rdf:type rdf:resource="&pemilu;TingkatPendidikan"/>
+        <rdfs:comment xml:lang="id">Setingkat Sarjana</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#S1HubunganInternasionalUGM -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;S1HubunganInternasionalUGM">
+        <rdf:type rdf:resource="&pemilu;ProgramStudi"/>
+        <diFakultas rdf:resource="&pemilu;FisipolUGM"/>
+        <dalamBidangIlmu rdf:resource="&pemilu;HubunganInternasional"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#S1HukumUKI -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;S1HukumUKI">
+        <rdf:type rdf:resource="&pemilu;ProgramStudi"/>
+        <dalamBidangIlmu rdf:resource="&pemilu;Hukum"/>
+        <diUniversitas rdf:resource="&pemilu;UniversitasKristenIndonesia"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#S1PsikologiUI -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;S1PsikologiUI">
+        <rdf:type rdf:resource="&pemilu;ProgramStudi"/>
+        <diFakultas rdf:resource="&pemilu;FakultasPsikologiUI"/>
+        <dalamBidangIlmu rdf:resource="&pemilu;Psikologi"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#S2 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;S2">
+        <rdf:type rdf:resource="&pemilu;TingkatPendidikan"/>
+        <rdfs:comment xml:lang="id">Magister</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#S2HukumUI -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;S2HukumUI">
+        <rdf:type rdf:resource="&pemilu;ProgramStudi"/>
+        <dalamBidangIlmu rdf:resource="&pemilu;Hukum"/>
+        <diUniversitas rdf:resource="&pemilu;UniversitasIndonesia"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#S2PsikologiUI -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;S2PsikologiUI">
+        <rdf:type rdf:resource="&pemilu;ProgramStudi"/>
+        <diFakultas rdf:resource="&pemilu;FakultasPsikologiUI"/>
+        <dalamBidangIlmu rdf:resource="&pemilu;Psikologi"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#S3 -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;S3">
+        <rdf:type rdf:resource="&pemilu;TingkatPendidikan"/>
+        <rdfs:comment xml:lang="id">Doktor</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#SD_ReginaPacis -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;SD_ReginaPacis">
+        <rdf:type rdf:resource="&pemilu;PendidikanDasar"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#SESKOAL -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;SESKOAL">
+        <rdf:type rdf:resource="&pemilu;PendidikanTinggi"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#SH -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;SH">
+        <rdf:type rdf:resource="&pemilu;GelarPendidikan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#SMAN_2_BOGOR -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;SMAN_2_BOGOR">
+        <rdf:type rdf:resource="&pemilu;PendidikanMenengah"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#SMP_ReginaPacis -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;SMP_ReginaPacis">
+        <rdf:type rdf:resource="&pemilu;PendidikanMenengah"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#STEKPI -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;STEKPI">
+        <rdf:type rdf:resource="&pemilu;Universitas"/>
+        <bertempatDi rdf:resource="&pemilu;DKI_Jakarta"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#STIE_IBMI -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;STIE_IBMI">
+        <rdf:type rdf:resource="&pemilu;Universitas"/>
+        <bertempatDi rdf:resource="&pemilu;DKI_Jakarta"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#SorbonneUniversity -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;SorbonneUniversity">
+        <rdf:type rdf:resource="&pemilu;Universitas"/>
+        <bertempatDi rdf:resource="&pemilu;Paris"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Sulbar -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Sulbar">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Sulawesi Barat</rdfs:label>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">1589162</jumlahPenduduk>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">3</jumlahKursi>
+        <kode rdf:datatype="&xsd;positiveInteger">76</kode>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Sulsel -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Sulsel">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Sulawesi Selatan</rdfs:label>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">24</jumlahKursi>
+        <kode rdf:datatype="&xsd;positiveInteger">73</kode>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">9368107</jumlahPenduduk>
+        <subDaerah rdf:resource="&pemilu;Indonesia"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Sulteng -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Sulteng">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Sulawesi Tengah</rdfs:label>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">2935343</jumlahPenduduk>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">6</jumlahKursi>
+        <kode rdf:datatype="&xsd;positiveInteger">72</kode>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Sultra -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Sultra">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Sulawesi Tenggara</rdfs:label>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">2691623</jumlahPenduduk>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">5</jumlahKursi>
+        <kode rdf:datatype="&xsd;positiveInteger">74</kode>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Sulut -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Sulut">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Sulawesi Utara</rdfs:label>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">2617155</jumlahPenduduk>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">6</jumlahKursi>
+        <kode rdf:datatype="&xsd;positiveInteger">71</kode>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Sumbar -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Sumbar">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Sumatera Barat</rdfs:label>
+        <kode rdf:datatype="&xsd;positiveInteger">13</kode>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">14</jumlahKursi>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">5617977</jumlahPenduduk>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Sumsel -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Sumsel">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Sumatera Selatan</rdfs:label>
+        <kode rdf:datatype="&xsd;positiveInteger">16</kode>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">17</jumlahKursi>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">8528719</jumlahPenduduk>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#Sumut -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;Sumut">
+        <rdf:type rdf:resource="&pemilu;Provinsi"/>
+        <rdfs:label xml:lang="id">Sumatera Utara</rdfs:label>
+        <kode rdf:datatype="&xsd;positiveInteger">12</kode>
+        <jumlahPenduduk rdf:datatype="&xsd;positiveInteger">15227719</jumlahPenduduk>
+        <jumlahKursi rdf:datatype="&xsd;positiveInteger">30</jumlahKursi>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#TangerangSelatan -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;TangerangSelatan">
+        <rdf:type rdf:resource="&pemilu;KotaKabupaten"/>
+        <subDaerah rdf:resource="&pemilu;Banten"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#UGM -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;UGM">
+        <rdf:type rdf:resource="&pemilu;Universitas"/>
+        <bertempatDi rdf:resource="&pemilu;DIY"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#UniversitasCairo -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;UniversitasCairo">
+        <rdf:type rdf:resource="&pemilu;Universitas"/>
+        <rdfs:label>Universitas Cairo</rdfs:label>
+        <bertempatDi rdf:resource="&pemilu;Kairo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#UniversitasHassanudin -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;UniversitasHassanudin">
+        <rdf:type rdf:resource="&pemilu;Universitas"/>
+        <rdfs:label>Universitas Hassanudin</rdfs:label>
+        <bertempatDi rdf:resource="&pemilu;Makassar"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#UniversitasIndonesia -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;UniversitasIndonesia">
+        <rdf:type rdf:resource="&pemilu;Universitas"/>
+        <rdfs:label>Universitas Indonesia</rdfs:label>
+        <bertempatDi rdf:resource="&pemilu;DKI_Jakarta"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#UniversitasKristenIndonesia -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;UniversitasKristenIndonesia">
+        <rdf:type rdf:resource="&pemilu;Universitas"/>
+        <bertempatDi rdf:resource="&pemilu;DKI_Jakarta"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#UniversitasPadjadjaran -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;UniversitasPadjadjaran">
+        <rdf:type rdf:resource="&pemilu;Universitas"/>
+        <bertempatDi rdf:resource="&pemilu;Bandung"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#UniversitasParahyangan -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;UniversitasParahyangan">
+        <rdf:type rdf:resource="&pemilu;Universitas"/>
+        <bertempatDi rdf:resource="&pemilu;Bandung"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://pebbie.org/ont/2014/pemilu#UniversitasTrisakti -->
+
+    <owl:NamedIndividual rdf:about="&pemilu;UniversitasTrisakti">
+        <rdf:type rdf:resource="&pemilu;Universitas"/>
+        <bertempatDi rdf:resource="&pemilu;DKI_Jakarta"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="urn:swrl#p">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl#univ">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl#orang">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl#n">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl#o">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl#uni">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl#l">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl#u">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl#d">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl#e">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl#prodi">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl#bidang">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl#g">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl#f">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl#prog">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="&pemilu;latarBelakangIlmu"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#bidang"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#o"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="&pemilu;dalamBidangIlmu"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#bidang"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#prodi"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="&pemilu;mengikutiPendidikan"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#o"/>
+                                <swrl:argument2 rdf:resource="urn:swrl#p"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;AtomList"/>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="&pemilu;padaProgram"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl#prodi"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="&pemilu;berGelar"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#g"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#o"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="&pemilu;mendapatGelar"/>
+                                <swrl:argument2 rdf:resource="urn:swrl#g"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;AtomList"/>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="&pemilu;mengikutiPendidikan"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl#o"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl#p"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&pemilu;Orang"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#o"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:body>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="&pemilu;almamater"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#orang"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#univ"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="&pemilu;diKampus"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#univ"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:rest rdf:resource="&rdf;nil"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="&pemilu;mengikutiPendidikan"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#orang"/>
+                                <swrl:argument2 rdf:resource="urn:swrl#p"/>
+                            </rdf:Description>
+                        </rdf:first>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="&pemilu;diUniversitas"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#u"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="&pemilu;diFakultas"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#f"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:rest rdf:resource="&rdf;nil"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="&pemilu;diUniversitas"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#f"/>
+                                <swrl:argument2 rdf:resource="urn:swrl#u"/>
+                            </rdf:Description>
+                        </rdf:first>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&pemilu;Universitas"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#univ"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="&pemilu;padaProgram"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl#prog"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                                        <rdf:rest rdf:resource="&rdf;nil"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="&pemilu;subOrganisasi"/>
+                                                <swrl:argument1 rdf:resource="urn:swrl#prog"/>
+                                                <swrl:argument2 rdf:resource="urn:swrl#univ"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="&pemilu;mengikutiPendidikan"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#orang"/>
+                                <swrl:argument2 rdf:resource="urn:swrl#p"/>
+                            </rdf:Description>
+                        </rdf:first>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="&pemilu;almamater"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#orang"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#univ"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&pemilu;Negara"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#n"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="&pemilu;almamater"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#o"/>
+                                <swrl:argument2 rdf:resource="urn:swrl#uni"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;AtomList"/>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                                        <rdf:rest rdf:resource="&rdf;nil"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="&pemilu;subDaerah"/>
+                                                <swrl:argument1 rdf:resource="urn:swrl#l"/>
+                                                <swrl:argument2 rdf:resource="urn:swrl#n"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                    </rdf:Description>
+                                </rdf:rest>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="&pemilu;bertempatDi"/>
+                                        <swrl:argument2 rdf:resource="urn:swrl#l"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl#uni"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="&pemilu;negaraAlmamater"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#n"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#o"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:rest rdf:resource="&rdf;nil"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="&pemilu;subDaerah"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#d"/>
+                                <swrl:argument2 rdf:resource="urn:swrl#e"/>
+                            </rdf:Description>
+                        </rdf:first>
+                    </rdf:Description>
+                </rdf:rest>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="&pemilu;bertempatDi"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#d"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#u"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="&pemilu;bertempatDi"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#e"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#u"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+

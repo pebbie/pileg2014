@@ -12,5 +12,6 @@ Tools
 
 Lihat juga
 =========
+* [data KPU](http://dct.kpu.go.id/)
 * [basis data caleg](http://caleg.ee.itb.ac.id)
 * [pemilu API](https://github.com/pemiluAPI)

@@ -3,9 +3,11 @@ pileg2014
 
 Ontologi Calon Legislatif Pemilu Indonesia 2014
 
+[](img/ontologi.png)
+
 Tools
 -------
-Protege 4.3
+[Protege 4.3](http://protege.stanford.edu/download/download.html)
 
 
 Lihat juga

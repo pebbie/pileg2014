@@ -1,4 +1,5 @@
- #Tampilkan seluruh nama caleg yang merupakan guru besar (bergelar Prof.)#   
+Tampilkan seluruh nama caleg yang merupakan guru besar (bergelar Prof.)
+==   
  
     PREFIX pemilu: <http://pebbie.org/ont/2014/pemilu#>
     SELECT ?nama 
